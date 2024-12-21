@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta description="Register by providing the necessary details">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon">
+</head>
+
+<body>
+<div class="container">
+    <h1>Registration Form</h1>
+    <form name="registration" method="post" action="https://www.google.com" onsubmit="return formValidation()" enctype="multipart/form-data" >
+        <table>
+            
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" name="name" id="name" placeholder="Enter Name" class="textbox"></label></td>
+            </tr>
+
+            <tr>
+                <td><label for="email">E-Mail:</label></td>
+                <td><input type="text" name="email" id="email" placeholder="Enter Email" class="textbox"></label></td>
+            </tr>
+
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" name="password" id="password" placeholder="Create Password" class="textbox"></label></td>
+            </tr>
+
+            <tr>
+                <td><label for="conf_password">Confirm Password:</label></td>
+                <td><input type="password" name="conf_password" id="conf_password" placeholder="Confirm Password" class="textbox"></label></td>
+            </tr>
+
+            <tr>
+                <td><label for="phoneNumber">Phone Number:</label></td>
+                <td><input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Phone Number(10 digits)" class="textbox" maxlength="10"></td>
+            </tr>
+
+           <tr>
+              <td><label>Gender:</label></td>
+              <td>
+                Male: <input type="radio" name="gender" id="gender1" value="male" class="textbox">
+                Female: <input type="radio" name="gender" id="gender2" value="female" class="textbox">
+              </td>
+           </tr>
+
+           <tr>
+              <td><label for="language">Select Language</label></td>
+              <td>
+                <select name="language" id="language" class="textbox">
+                    <option value="">Select Language</option>
+                    <option value="English">English</option>
+                    <option value="German">German</option>
+                    <option value="French">French</option>
+                    <option value="Hindi">Hindi</option>
+                </select>
+              </td>
+           </tr>
+
+           <tr>
+              <td><label for="attachment">Attachment:</label></td>
+              <td><input type="file" name="attachment" id="attachment" class="textbox"></td>
+           </tr>
+
+           <tr>
+              <td colspan="2"><input type="submit" class="submit"></td>
+           </tr>
+
+        </table>
+    </form>
+</div> 
+</body>
+
+<script type="text/javascript">
+
+function formValidation()
+{
+
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var password = document.getElementById("password").value;
+var conf_password = document.getElementById("conf_password").value;
+var phoneNumber = document.getElementById("phoneNumber").value;
+var gender1 = document.getElementById("gender1").checked;
+var gender2 = document.getElementById("gender2").checked;
+var language = document.getElementById("language").value;
+var attachment = document.getElementById("attachment").value;
+
+if (name=='')
+{
+    alert("Enter valid Name");
+    document.getElementById("name").focus();
+return false;
+}
+
+if (name.length < 2 || name.length > 20) 
+{
+	alert("Name length should be more than 2 and less than 20");
+	document.getElementById("name").focus();
+return false;
+}
+
+if(email=='')
+{
+	alert("Enter valid email");
+	document.getElementById("email").focus();
+return false;
+}
+
+var mailformat = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+if(!mailformat.test(email))
+{
+	alert("Enter valid email");
+	document.getElementById("email").focus(); 
+return false;
+} 
+
+if(password=='')
+{
+	alert("Create your Password");
+	document.getElementById("password").focus();
+return false;
+}
+
+if(conf_password=='')
+{
+	alert("Confirm your Password");
+	document.getElementById("conf_password").focus(); 
+	return false;
+}
+
+if(password!=conf_password)
+{
+	alert("Password and confirm password does not match");
+	document.getElementById("password").focus();
+return false;
+} 
+
+if (!phoneNumber.match(/^[1-9][0-9]{9}$/)) 
+{
+	alert("Phone number must be 10 characters long number and first digit can't be 0");
+	document.getElementById("phoneNumber").focus();
+return false;
+}
+
+if(document.getElementById('gender1').checked || document.getElementById('gender2').checked) 
+{
+}
+else
+{
+alert ("You must select a gender");
+return false;
+}
+
+if (language == "")
+{
+	alert("Please select your language")
+return false;
+}
+  
+if(attachement=="")
+{
+			alert("Please select the attachement file.");
+return false;
+}
+
+return true;
+
+}
+</script>
+
+</html>
